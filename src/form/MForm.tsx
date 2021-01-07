@@ -23,7 +23,7 @@ const MForm: React.FC<MFormProps> = ({ label, targetName, options }) => {
             <Form.Label>{capitalize(label)}</Form.Label>
             <Form.Control size="lg" as="select" name={targetName}>
               {options.optionValues.map((optionValue, index) => {
-                let optionShortcut = options.optionShortcuts[index];
+                let optionShortcut: string = options.optionShortcuts[index];
                 return (
                   <>
                     <option disabled={true} value="">
