@@ -8,24 +8,27 @@ type options = {
   optionShortcuts: string[];
 };
 
+type TOnchange = (e: React.ChangeEvent<HTMLInputElement>) => void;
+
+type inputs = {
+  [key: string]: string;
+};
+
 interface MFormProps {
   label: string;
   targetName: string;
   options: options;
+  onChange: TOnchange;
+  inputs: inputs;
 }
 
-interface TInputState {
-  [key: string]: string;
-}
-
-const MForm: React.FC<MFormProps> = ({ label, targetName, options }) => {
-  const [inputs, setInputs] = useState<Partial<TInputState>>({});
-
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.persist();
-    setInputs((inputs) => ({ ...inputs, [e.target.name]: e.target.value }));
-  };
-
+const MForm: React.FC<MFormProps> = ({
+  label,
+  targetName,
+  options,
+  onChange,
+  inputs,
+}) => {
   return (
     <Form>
       <Form.Group controlId="formBasicMushrooms">
@@ -34,7 +37,7 @@ const MForm: React.FC<MFormProps> = ({ label, targetName, options }) => {
           as="select"
           name={targetName}
           value={inputs[targetName] || ""}
-          onChange={handleOnChange}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e)}
         >
           <option disabled={true} value="">
             {capitalize("choose your answer")}

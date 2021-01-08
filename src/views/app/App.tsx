@@ -10,8 +10,18 @@ import { formElements } from "../../shared/formElements";
 import { features } from "../../shared/mushroomFeatures";
 import "./App.css";
 
+interface TInputState {
+  [key: string]: string;
+}
+
 const App: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [inputs, setInputs] = useState<TInputState>({});
+
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.persist();
+    setInputs((inputs) => ({ ...inputs, [e.target.name]: e.target.value }));
+  };
 
   const handlePrev = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.preventDefault();
@@ -20,7 +30,9 @@ const App: React.FC = () => {
 
   const handleNext = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.preventDefault();
-    currentIndex < 11 && setCurrentIndex((currentIndex) => ++currentIndex);
+    currentIndex < 11 &&
+      inputs[features[currentIndex]] !== undefined &&
+      setCurrentIndex((currentIndex) => ++currentIndex);
   };
 
   return (
@@ -32,6 +44,8 @@ const App: React.FC = () => {
             label={formElements[currentIndex].label}
             targetName={features[currentIndex]}
             options={formElements[currentIndex].option}
+            onChange={handleOnChange}
+            inputs={inputs}
           />
         </Col>
         <Col xs={3} />
