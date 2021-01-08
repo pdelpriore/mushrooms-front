@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Row, Col, Button, Spinner } from "react-bootstrap";
 import { capitalize, capitalizeFirst } from "../methods/capitalize";
 import "./form.css";
@@ -14,14 +14,30 @@ interface MFormProps {
   options: options;
 }
 
+interface TInputState {
+  [key: string]: string;
+}
+
 const MForm: React.FC<MFormProps> = ({ label, targetName, options }) => {
+  const [inputs, setInputs] = useState<Partial<TInputState>>({});
+
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.persist();
+    setInputs((inputs) => ({ ...inputs, [e.target.name]: e.target.value }));
+  };
+
   return (
     <Form>
       <Row>
         <Col xs={12}>
           <Form.Group controlId="formBasicMushrooms">
             <Form.Label>{capitalize(label)}</Form.Label>
-            <Form.Control as="select" name={targetName} value="">
+            <Form.Control
+              as="select"
+              name={targetName}
+              value={inputs[targetName] || ""}
+              onChange={handleOnChange}
+            >
               <option disabled={true} value="">
                 {capitalize("choose your answer")}
               </option>
