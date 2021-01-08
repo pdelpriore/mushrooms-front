@@ -21,18 +21,16 @@ const MForm: React.FC<MFormProps> = ({ label, targetName, options }) => {
         <Col xs={12}>
           <Form.Group controlId="formBasicMushrooms">
             <Form.Label>{capitalize(label)}</Form.Label>
-            <Form.Control size="lg" as="select" name={targetName}>
+            <Form.Control as="select" name={targetName} value="">
+              <option disabled={true} value="">
+                {capitalize("choose your answer")}
+              </option>
               {options.optionValues.map((optionValue, index) => {
                 let optionShortcut: string = options.optionShortcuts[index];
                 return (
-                  <>
-                    <option disabled={true} value="">
-                      {capitalize("choose one option")}
-                    </option>
-                    <option key={index} value={optionShortcut}>
-                      {capitalizeFirst(optionValue)}
-                    </option>
-                  </>
+                  <option key={index} value={optionShortcut || ""}>
+                    {capitalizeFirst(optionValue)}
+                  </option>
                 );
               })}
             </Form.Control>
