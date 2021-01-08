@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Row, Col, Button } from "react-bootstrap";
-import MForm from "../../form/MForm";
+import MForm from "../../components/form/MForm";
 import { formElements } from "../../shared/formElements";
 import { features } from "../../shared/mushroomFeatures";
 import "./App.css";
