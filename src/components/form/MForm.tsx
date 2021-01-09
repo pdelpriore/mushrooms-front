@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form, Button, Spinner } from "react-bootstrap";
 import { capitalize, capitalizeFirst } from "../../methods/capitalize";
 import "./form.css";
@@ -15,6 +15,7 @@ type inputs = {
 };
 
 interface MFormProps {
+  submitDisabled: boolean;
   label: string;
   targetName: string;
   options: options;
@@ -23,6 +24,7 @@ interface MFormProps {
 }
 
 const MForm: React.FC<MFormProps> = ({
+  submitDisabled,
   label,
   targetName,
   options,
@@ -40,7 +42,7 @@ const MForm: React.FC<MFormProps> = ({
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e)}
         >
           <option disabled={true} value="">
-            {capitalize("choose your answer")}
+            {capitalize("choose one option")}
           </option>
           {options.optionValues.map((optionValue, index) => {
             let optionShortcut: string = options.optionShortcuts[index];
@@ -52,6 +54,24 @@ const MForm: React.FC<MFormProps> = ({
           })}
         </Form.Control>
       </Form.Group>
+      <Button disabled={submitDisabled} type="submit" variant="outline-dark">
+        <div>
+          {false && (
+            <Spinner
+              as="span"
+              animation="border"
+              size="sm"
+              role="status"
+              aria-hidden="true"
+            />
+          )}
+          {false ? (
+            <span>{capitalize("checking ...")}</span>
+          ) : (
+            <span>{capitalizeFirst("check it out")}</span>
+          )}
+        </div>
+      </Button>
     </Form>
   );
 };

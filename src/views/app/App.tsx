@@ -8,7 +8,7 @@ import MForm from "../../components/form/MForm";
 import SwitchButton from "../../components/button/SwitchButton";
 import { formElements } from "../../shared/formElements";
 import { features } from "../../shared/mushroomFeatures";
-import "./App.css";
+import "./app.css";
 
 interface TInputState {
   [key: string]: string;
@@ -30,17 +30,35 @@ const App: React.FC = () => {
 
   const handleNext = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.preventDefault();
-    currentIndex < 11 &&
+    currentIndex < features.length - 1 &&
       inputs[features[currentIndex]] !== undefined &&
       setCurrentIndex((currentIndex) => ++currentIndex);
   };
 
   return (
     <div className="app">
+      <Row className="mt-4" />
       <Row>
-        <Col xs={3} />
-        <Col xs={6}>
+        <Col xs={4} />
+        <Col xs={1}>
+          <SwitchButton icon={faArrowAltCircleLeft} onClick={handlePrev} />
+        </Col>
+        <Col xs={2}>
+          <span>
+            {currentIndex + 1} / {features.length}
+          </span>
+        </Col>
+        <Col xs={1}>
+          <SwitchButton icon={faArrowAltCircleRight} onClick={handleNext} />
+        </Col>
+        <Col xs={4} />
+      </Row>
+      <Row className="mt-3" />
+      <Row>
+        <Col xs={4} />
+        <Col xs={4}>
           <MForm
+            submitDisabled={Object.values(inputs).length !== features.length}
             label={formElements[currentIndex].label}
             targetName={features[currentIndex]}
             options={formElements[currentIndex].option}
@@ -48,18 +66,7 @@ const App: React.FC = () => {
             inputs={inputs}
           />
         </Col>
-        <Col xs={3} />
-      </Row>
-      <Row>
-        <Col xs={3} />
-        <Col xs={1}>
-          <SwitchButton icon={faArrowAltCircleLeft} onClick={handlePrev} />
-        </Col>
         <Col xs={4} />
-        <Col xs={1}>
-          <SwitchButton icon={faArrowAltCircleRight} onClick={handleNext} />
-        </Col>
-        <Col xs={3} />
       </Row>
     </div>
   );
