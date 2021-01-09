@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import {
   faArrowAltCircleLeft,
@@ -17,7 +17,6 @@ interface TInputState {
 const App: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [inputs, setInputs] = useState<TInputState>({});
-  const [showResetButton, setShowResetButton] = useState<boolean>(false);
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.persist();
@@ -38,12 +37,9 @@ const App: React.FC = () => {
 
   const handleReset = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    // dispatch clearState
     setInputs({});
-    setShowResetButton(false);
+    // dispatch clearState
   };
-
-  // kiedy pojawi sie result z serwera, useEffect zmieni setShowReset na true
 
   return (
     <div className="app">
@@ -75,7 +71,6 @@ const App: React.FC = () => {
             onChange={handleOnChange}
             onClick={handleReset}
             inputs={inputs}
-            showReset={showResetButton}
           />
         </Col>
         <Col xs={4} />

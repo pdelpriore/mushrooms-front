@@ -24,7 +24,6 @@ interface MFormProps {
   onChange: TOnchange;
   onClick: TOnclick;
   inputs: inputs;
-  showReset: boolean;
 }
 
 const MForm: React.FC<MFormProps> = ({
@@ -35,7 +34,6 @@ const MForm: React.FC<MFormProps> = ({
   onChange,
   onClick,
   inputs,
-  showReset,
 }) => {
   return (
     <Form>
@@ -60,7 +58,8 @@ const MForm: React.FC<MFormProps> = ({
           })}
         </Form.Control>
       </Form.Group>
-      {!showReset && (
+      {/* kiedy przyjdzie result z serwera uzyj result.length > 0 by pokazac reset button i 0 by pokazac submit button  */}
+      {true && (
         <Button disabled={submitDisabled} type="submit" variant="outline-dark">
           <div>
             {false && (
@@ -80,7 +79,7 @@ const MForm: React.FC<MFormProps> = ({
           </div>
         </Button>
       )}
-      {showReset && (
+      {false && (
         <Button
           onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
             onClick(e)
