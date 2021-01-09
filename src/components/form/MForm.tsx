@@ -10,6 +10,8 @@ type options = {
 
 type TOnchange = (e: React.ChangeEvent<HTMLInputElement>) => void;
 
+type TOnclick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+
 type inputs = {
   [key: string]: string;
 };
@@ -20,7 +22,9 @@ interface MFormProps {
   targetName: string;
   options: options;
   onChange: TOnchange;
+  onClick: TOnclick;
   inputs: inputs;
+  showReset: boolean;
 }
 
 const MForm: React.FC<MFormProps> = ({
@@ -29,7 +33,9 @@ const MForm: React.FC<MFormProps> = ({
   targetName,
   options,
   onChange,
+  onClick,
   inputs,
+  showReset,
 }) => {
   return (
     <Form>
@@ -54,24 +60,36 @@ const MForm: React.FC<MFormProps> = ({
           })}
         </Form.Control>
       </Form.Group>
-      <Button disabled={submitDisabled} type="submit" variant="outline-dark">
-        <div>
-          {false && (
-            <Spinner
-              as="span"
-              animation="border"
-              size="sm"
-              role="status"
-              aria-hidden="true"
-            />
-          )}
-          {false ? (
-            <span>{capitalize("checking ...")}</span>
-          ) : (
-            <span>{capitalizeFirst("check it out")}</span>
-          )}
-        </div>
-      </Button>
+      {!showReset && (
+        <Button disabled={submitDisabled} type="submit" variant="outline-dark">
+          <div>
+            {false && (
+              <Spinner
+                as="span"
+                animation="border"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+              />
+            )}
+            {false ? (
+              <span>{capitalize("checking ...")}</span>
+            ) : (
+              <span>{capitalizeFirst("check it out")}</span>
+            )}
+          </div>
+        </Button>
+      )}
+      {showReset && (
+        <Button
+          onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+            onClick(e)
+          }
+          variant="dark"
+        >
+          Reset
+        </Button>
+      )}
     </Form>
   );
 };
