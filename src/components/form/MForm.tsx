@@ -72,9 +72,9 @@ const MForm: React.FC<MFormProps> = ({
               />
             )}
             {false ? (
-              <span>{capitalize("checking ...")}</span>
+              <span>{capitalize("predicting ...")}</span>
             ) : (
-              <span>{capitalizeFirst("check it out")}</span>
+              <span>{capitalizeFirst("predict")}</span>
             )}
           </div>
         </Button>
