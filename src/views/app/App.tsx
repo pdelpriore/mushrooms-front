@@ -42,6 +42,7 @@ const App: React.FC = () => {
 
   const handleReset = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
+    setCurrentIndex(0);
     setInputs({});
     // dispatch clearState
   };
