@@ -10,6 +10,11 @@ import { formElements } from "../../shared/formElements";
 import { features } from "../../shared/mushroomFeatures";
 import "./app.css";
 
+type modifiers = {
+  edible: string;
+  poisonous: string;
+};
+
 interface TInputState {
   [key: string]: string;
 }
@@ -41,13 +46,25 @@ const App: React.FC = () => {
     // dispatch clearState
   };
 
+  // modifiers uzyte beda do zmiany koloru result, modifiers[result] w className zdeterminuje ktory zostanie uzyty
+  // uzupelnic nazwy modyfikatorow !
+
+  const modifiers: modifiers = {
+    edible: "--green",
+    poisonous: "--red",
+  };
+
   return (
     <div className="app">
       <Row className="mt-4" />
       <Row>
         <Col xs={4} />
         <Col xs={1}>
-          <SwitchButton icon={faArrowAltCircleLeft} onClick={handlePrev} />
+          <SwitchButton
+            blocked={currentIndex === 0}
+            icon={faArrowAltCircleLeft}
+            onClick={handlePrev}
+          />
         </Col>
         <Col xs={2}>
           <span>
@@ -55,7 +72,14 @@ const App: React.FC = () => {
           </span>
         </Col>
         <Col xs={1}>
-          <SwitchButton icon={faArrowAltCircleRight} onClick={handleNext} />
+          <SwitchButton
+            blocked={
+              currentIndex < features.length - 1 &&
+              inputs[features[currentIndex]] !== undefined
+            }
+            icon={faArrowAltCircleRight}
+            onClick={handleNext}
+          />
         </Col>
         <Col xs={4} />
       </Row>
