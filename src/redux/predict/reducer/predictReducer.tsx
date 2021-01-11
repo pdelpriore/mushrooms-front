@@ -26,7 +26,7 @@ const predictReducer = (
     case LOADING:
       return { ...state, loading: action.payload };
     case RESULT:
-      return { ...state, loading: false, predictResult: action.payload };
+      return { ...state, ...initialState, predictResult: action.payload };
     case ERROR:
       return { ...state, loading: false, error: action.payload };
     case CLEAR:

@@ -59,6 +59,7 @@ const MForm: React.FC<MFormProps> = ({
         </Form.Control>
       </Form.Group>
       {/* kiedy przyjdzie result z serwera uzyj result.length > 0 by pokazac reset button i 0 by pokazac submit button  */}
+      {/* rowniez jesli przyjdzie err z serwera to przycisk predict powinien byc widoczny, zeby ponowic probe */}
       {true && (
         <Button disabled={submitDisabled} type="submit" variant="outline-dark">
           <div>
