@@ -33,7 +33,7 @@ export const predict = (data: Data) => {
         if (err) {
           dispatch({
             type: ERROR,
-            payload: capitalize("network error, try again"),
+            payload: capitalize("network error, please try again"),
           });
         }
       }

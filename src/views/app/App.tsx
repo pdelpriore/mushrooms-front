@@ -14,6 +14,7 @@ import MForm from "../../components/form/MForm";
 import SwitchButton from "../../components/button/SwitchButton";
 import { formElements } from "../../shared/formElements";
 import { features } from "../../shared/mushroomFeatures";
+import { capitalizeFirst } from "../../methods/capitalize";
 import "./app.css";
 
 type modifiers = {
@@ -119,7 +120,9 @@ const App: React.FC = () => {
       <Row>
         <Col xs={5} />
         <Col xs={2}>
-          {predictResult.length > 0 && <span>{predictResult}</span>}
+          {predictResult.length > 0 && (
+            <span>{capitalizeFirst(predictResult)}</span>
+          )}
         </Col>
         <Col xs={5} />
       </Row>
