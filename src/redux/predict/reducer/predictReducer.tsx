@@ -8,14 +8,14 @@ import {
 
 interface PredictState {
   loading: boolean;
-  predictResult: null | string;
-  error: null | string;
+  predictResult: string;
+  error: string;
 }
 
 const initialState: PredictState = {
   loading: false,
-  predictResult: null,
-  error: null,
+  predictResult: "",
+  error: "",
 };
 
 const predictReducer = (

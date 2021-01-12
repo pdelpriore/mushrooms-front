@@ -68,7 +68,7 @@ const MForm: React.FC<MFormProps> = ({
           })}
         </Form.Control>
       </Form.Group>
-      {(predictResult === null || (error !== null && error.length > 0)) && (
+      {(predictResult.length === 0 || error.length > 0) && (
         <Button disabled={submitDisabled} type="submit" variant="outline-dark">
           <div>
             {loading && (
@@ -88,7 +88,7 @@ const MForm: React.FC<MFormProps> = ({
           </div>
         </Button>
       )}
-      {predictResult !== null && predictResult.length > 0 && error === null && (
+      {predictResult.length > 0 && error.length === 0 && (
         <Button
           onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
             onClick(e)
