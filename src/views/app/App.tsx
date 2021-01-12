@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/config/Store";
 import {
   predict,
   clearPredictState,
@@ -29,6 +30,8 @@ const App: React.FC = () => {
 
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [inputs, setInputs] = useState<TInputState>({});
+
+  const { predictResult } = useSelector((state: RootState) => state.prediction);
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.persist();
@@ -112,6 +115,13 @@ const App: React.FC = () => {
           />
         </Col>
         <Col xs={4} />
+      </Row>
+      <Row>
+        <Col xs={5} />
+        <Col xs={2}>
+          {predictResult.length > 0 && <span>{predictResult}</span>}
+        </Col>
+        <Col xs={5} />
       </Row>
     </div>
   );

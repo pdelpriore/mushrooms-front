@@ -88,6 +88,7 @@ const MForm: React.FC<MFormProps> = ({
           </div>
         </Button>
       )}
+      {error.length > 0 && <span>{error}</span>}
       {predictResult.length > 0 && error.length === 0 && (
         <Button
           onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
