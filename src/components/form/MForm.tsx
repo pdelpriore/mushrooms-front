@@ -1,4 +1,6 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/config/Store";
 import { Form, Button, Spinner } from "react-bootstrap";
 import { capitalize, capitalizeFirst } from "../../methods/capitalize";
 import "./form.css";
@@ -12,6 +14,8 @@ type TOnchange = (e: React.ChangeEvent<HTMLInputElement>) => void;
 
 type TOnclick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 
+type TOnsubmit = (e: React.FormEvent) => void;
+
 type inputs = {
   [key: string]: string;
 };
@@ -23,6 +27,7 @@ interface MFormProps {
   options: options;
   onChange: TOnchange;
   onClick: TOnclick;
+  onSubmit: TOnsubmit;
   inputs: inputs;
 }
 
@@ -33,10 +38,15 @@ const MForm: React.FC<MFormProps> = ({
   options,
   onChange,
   onClick,
+  onSubmit,
   inputs,
 }) => {
+  const { loading, predictResult, error } = useSelector(
+    (state: RootState) => state.prediction
+  );
+
   return (
-    <Form>
+    <Form onSubmit={(e: React.FormEvent) => onSubmit(e)}>
       <Form.Group controlId="formBasicMushrooms">
         <Form.Label>{capitalize(label)}</Form.Label>
         <Form.Control
@@ -58,12 +68,10 @@ const MForm: React.FC<MFormProps> = ({
           })}
         </Form.Control>
       </Form.Group>
-      {/* kiedy przyjdzie result z serwera uzyj result.length > 0 by pokazac reset button i 0 by pokazac submit button  */}
-      {/* rowniez jesli przyjdzie err z serwera to przycisk predict powinien byc widoczny, zeby ponowic probe */}
-      {true && (
+      {(predictResult === null || (error !== null && error.length > 0)) && (
         <Button disabled={submitDisabled} type="submit" variant="outline-dark">
           <div>
-            {false && (
+            {loading && (
               <Spinner
                 as="span"
                 animation="border"
@@ -72,7 +80,7 @@ const MForm: React.FC<MFormProps> = ({
                 aria-hidden="true"
               />
             )}
-            {false ? (
+            {loading ? (
               <span>{capitalizeFirst("predicting ...")}</span>
             ) : (
               <span>{capitalizeFirst("predict")}</span>
@@ -80,7 +88,7 @@ const MForm: React.FC<MFormProps> = ({
           </div>
         </Button>
       )}
-      {false && (
+      {predictResult !== null && predictResult.length > 0 && error === null && (
         <Button
           onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
             onClick(e)

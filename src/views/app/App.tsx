@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import {
+  predict,
+  clearPredictState,
+} from "../../redux/predict/thunk/predictThunk";
 import { Row, Col, Button } from "react-bootstrap";
 import {
   faArrowAltCircleLeft,
@@ -20,6 +25,8 @@ interface TInputState {
 }
 
 const App: React.FC = () => {
+  const dispatch = useDispatch();
+
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [inputs, setInputs] = useState<TInputState>({});
 
@@ -44,7 +51,12 @@ const App: React.FC = () => {
     e.preventDefault();
     setCurrentIndex(0);
     setInputs({});
-    // dispatch clearState
+    dispatch(clearPredictState());
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    dispatch(predict(inputs));
   };
 
   // modifiers uzyte beda do zmiany koloru result, modifiers[result] w className zdeterminuje ktory zostanie uzyty
@@ -95,6 +107,7 @@ const App: React.FC = () => {
             options={formElements[currentIndex].option}
             onChange={handleOnChange}
             onClick={handleReset}
+            onSubmit={handleSubmit}
             inputs={inputs}
           />
         </Col>

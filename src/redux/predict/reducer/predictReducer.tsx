@@ -4,7 +4,7 @@ import {
   RESULT,
   ERROR,
   CLEAR,
-} from "../../config/type/dispatchType";
+} from "../type/dispatchType";
 
 interface PredictState {
   loading: boolean;

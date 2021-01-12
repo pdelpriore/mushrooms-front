@@ -5,23 +5,12 @@ import {
   RESULT,
   ERROR,
   CLEAR,
-} from "../../config/type/dispatchType";
+} from "../type/dispatchType";
 import { capitalize } from "../../../methods/capitalize";
 import { url } from "../../url/Url";
 
 interface Data {
-  cupSurface: string;
-  bruises: string;
-  gillSpacing: string;
-  gillSize: string;
-  gillColor: string;
-  stalkSurfaceAboveRing: string;
-  stalkSurfaceBelowRing: string;
-  stalkColorAboveRing: string;
-  ringType: string;
-  sporePrintColor: string;
-  population: string;
-  habitat: string;
+  [key: string]: string;
 }
 
 export const predict = (data: Data) => {
@@ -40,11 +29,13 @@ export const predict = (data: Data) => {
 
       if (result) dispatch({ type: RESULT, payload: result });
     } catch (err) {
-      if (err) {
-        dispatch({
-          type: ERROR,
-          payload: capitalize("network error"),
-        });
+      {
+        if (err) {
+          dispatch({
+            type: ERROR,
+            payload: capitalize("network error, try again"),
+          });
+        }
       }
     }
   };
