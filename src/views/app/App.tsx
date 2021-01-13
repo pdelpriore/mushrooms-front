@@ -141,7 +141,7 @@ const App: React.FC = () => {
         </Col>
         <Col xs={5} />
       </Row>
-      <div className="containner__space"></div>
+      <div className="container__space"></div>
       <Row>
         <Col xs={2} />
         <Col xs={8}>
