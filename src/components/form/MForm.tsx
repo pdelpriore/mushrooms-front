@@ -102,7 +102,7 @@ const MForm: React.FC<MFormProps> = ({
           </div>
         </Button>
       )}
-      {error.length > 0 && <span>{error}</span>}
+      {error.length > 0 && <span className="form__error">{error}</span>}
       {predictResult.length > 0 && error.length === 0 && (
         <Button
           className="form__btn"

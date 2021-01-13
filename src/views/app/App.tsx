@@ -142,14 +142,16 @@ const App: React.FC = () => {
       <Row>
         <Col xs={2} />
         <Col xs={8}>
-          <Image
-            className="container__image"
-            src={require("../../assets/forest.jpg").default}
-          />
-          <Image
-            className="container__image"
-            src={require("../../assets/forest.jpg").default}
-          />
+          <div className="container__image">
+            <Image
+              className="container__image-img"
+              src={require("../../assets/forest.jpg").default}
+            />
+            <Image
+              className="container__image-img"
+              src={require("../../assets/forest.jpg").default}
+            />
+          </div>
         </Col>
         <Col xs={2} />
       </Row>

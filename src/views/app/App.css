@@ -34,5 +34,10 @@
 }
 
 .container__image {
+  display: flex;
+  flex-direction: row;
+}
+
+.container__image-img {
   width: 32vw;
 }
