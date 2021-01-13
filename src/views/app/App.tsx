@@ -103,7 +103,7 @@ const App: React.FC = () => {
           <SwitchButton
             blocked={
               currentIndex < features.length - 1 &&
-              inputs[features[currentIndex]] !== undefined
+              inputs[features[currentIndex]] === undefined
             }
             icon={faArrowAltCircleRight}
             onClick={handleNext}
