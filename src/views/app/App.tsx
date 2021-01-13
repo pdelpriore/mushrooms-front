@@ -63,8 +63,8 @@ const App: React.FC = () => {
   };
 
   const modifiers: modifiers = {
-    edible: "result--edible",
-    poisonous: "result--poisonous",
+    edible: "container__result-content--edible",
+    poisonous: "container__result-content--poisonous",
   };
 
   return (
@@ -102,7 +102,7 @@ const App: React.FC = () => {
         <Col xs={2}>
           <SwitchButton
             blocked={
-              currentIndex < features.length - 1 &&
+              currentIndex === features.length - 1 ||
               inputs[features[currentIndex]] === undefined
             }
             icon={faArrowAltCircleRight}
@@ -131,14 +131,19 @@ const App: React.FC = () => {
       <Row>
         <Col xs={5} />
         <Col xs={2}>
-          {predictResult.length > 0 && (
-            <span className={`result ${modifiers[predictResult]}`}>
-              {capitalizeFirst(predictResult)}
-            </span>
-          )}
+          <div className="container__result">
+            {predictResult.length > 0 && (
+              <span
+                className={`container__result-content ${modifiers[predictResult]}`}
+              >
+                {capitalizeFirst(predictResult)}
+              </span>
+            )}
+          </div>
         </Col>
         <Col xs={5} />
       </Row>
+      <div className="containner__space"></div>
       <Row>
         <Col xs={2} />
         <Col xs={8}>

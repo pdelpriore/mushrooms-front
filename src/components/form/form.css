@@ -1,0 +1,38 @@
+:root {
+  --font-size: 1vw;
+  --font-color: #0e153a;
+  --font-family: "OpenSans-Regular";
+}
+
+.form__label {
+  font-size: var(--font-size);
+  color: var(--font-color);
+  font-family: "OpenSans-SemiBold";
+}
+
+.form__control {
+  font-size: var(--font-size);
+  color: var(--font-color);
+  font-family: var(--font-family);
+}
+
+.form__option {
+  font-size: var(--font-size);
+  color: var(--font-color);
+  font-family: var(--font-family);
+}
+
+.form__btn-content {
+  font-size: var(--font-size);
+  font-family: var(--font-family);
+}
+
+.form_error {
+  height: 2vh;
+}
+
+.form__error-content {
+  display: block;
+  font-size: var(--font-size);
+  color: #dc3545;
+}

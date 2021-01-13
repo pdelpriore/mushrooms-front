@@ -9,6 +9,10 @@
   background-color: #e2f3f5;
 }
 
+.containner__space {
+  height: 20vh;
+}
+
 .banner {
   height: 22vh;
   text-align: center;
@@ -40,4 +44,23 @@
 
 .container__image-img {
   width: 32vw;
+}
+
+.container__result {
+  height: 8vh;
+  text-align: center;
+  margin-top: 2%;
+}
+
+.container__result-content {
+  font-size: 2.5vw;
+  font-family: "Nunito-Bold";
+}
+
+.container__result-content--edible {
+  color: #28a745;
+}
+
+.container__result-content--poisonous {
+  color: #dc3545;
 }
