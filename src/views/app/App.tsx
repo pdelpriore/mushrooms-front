@@ -72,7 +72,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="app">
+    <div className="container">
       <Row className="mt-4" />
       <Row>
         <Col xs={4} />
