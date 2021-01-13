@@ -2,26 +2,26 @@
   --icon-color: #0e153a;
 }
 
-.wrapper {
+.item {
   text-align: center;
 }
 
-.wrapper__icon {
+.item__icon {
   font-size: 2vw;
   color: var(--icon-color);
 }
 
-.wrapper__icon:hover {
+.item__icon:hover {
   cursor: pointer;
   transform: scale(1.1);
 }
 
-.wrapper__icon--blocked {
+.item__icon--blocked {
   color: var(--icon-color);
   opacity: 0.7;
 }
 
-.wrapper__icon--blocked:hover {
+.item__icon--blocked:hover {
   cursor: auto;
   transform: scale(1);
 }
