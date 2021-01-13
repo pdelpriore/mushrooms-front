@@ -6,7 +6,6 @@ import {
   ERROR,
   CLEAR,
 } from "../type/dispatchType";
-import { capitalize } from "../../../methods/capitalize";
 import { url } from "../../url/Url";
 
 interface Data {
@@ -33,7 +32,7 @@ export const predict = (data: Data) => {
         if (err) {
           dispatch({
             type: ERROR,
-            payload: capitalize("network error, please try again"),
+            payload: "network error, please try again",
           });
         }
       }
