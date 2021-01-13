@@ -5,7 +5,7 @@ import {
   predict,
   clearPredictState,
 } from "../../redux/predict/thunk/predictThunk";
-import { Row, Col, Button } from "react-bootstrap";
+import { Row, Col, Image } from "react-bootstrap";
 import {
   faArrowAltCircleLeft,
   faArrowAltCircleRight,
@@ -18,8 +18,7 @@ import { capitalizeFirst } from "../../methods/capitalize";
 import "./app.css";
 
 type modifiers = {
-  edible: string;
-  poisonous: string;
+  [key: string]: string;
 };
 
 interface TInputState {
@@ -63,17 +62,25 @@ const App: React.FC = () => {
     dispatch(predict(inputs));
   };
 
-  // modifiers uzyte beda do zmiany koloru result, modifiers[result] w className zdeterminuje ktory zostanie uzyty
-  // uzupelnic nazwy modyfikatorow !
-
   const modifiers: modifiers = {
-    edible: "--green",
-    poisonous: "--red",
+    edible: "result--edible",
+    poisonous: "result--poisonous",
   };
 
   return (
     <div className="container">
       <Row className="mt-4" />
+      <Row>
+        <Col xs={2} />
+        <Col xs={10}>
+          <div className="banner">
+            <span className="banner__title">Can I eat this</span>
+            {/* <Image className="banner__image" /> */}
+            <span className="banner__title">?</span>
+          </div>
+        </Col>
+        <Col xs={2} />
+      </Row>
       <Row>
         <Col xs={4} />
         <Col xs={1}>
@@ -84,7 +91,7 @@ const App: React.FC = () => {
           />
         </Col>
         <Col xs={2}>
-          <span>
+          <span className="counter">
             {currentIndex + 1} / {features.length}
           </span>
         </Col>
@@ -121,7 +128,9 @@ const App: React.FC = () => {
         <Col xs={5} />
         <Col xs={2}>
           {predictResult.length > 0 && (
-            <span>{capitalizeFirst(predictResult)}</span>
+            <span className={`result ${modifiers[predictResult]}`}>
+              {capitalizeFirst(predictResult)}
+            </span>
           )}
         </Col>
         <Col xs={5} />
