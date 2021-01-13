@@ -14,11 +14,11 @@ interface ButtonProps {
 const SwitchButton: React.FC<ButtonProps> = ({ blocked, icon, onClick }) => {
   return (
     <div
-      className="item"
+      className="icon"
       onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => onClick(e)}
     >
       <FontAwesomeIcon
-        className={`item__icon ${blocked && "item__icon--blocked"}`}
+        className={`icon-ico ${blocked && "icon-ico--blocked"}`}
         icon={icon}
       />
     </div>

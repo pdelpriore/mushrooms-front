@@ -63,8 +63,8 @@ const App: React.FC = () => {
   };
 
   const modifiers: modifiers = {
-    edible: "container__result-content--edible",
-    poisonous: "container__result-content--poisonous",
+    edible: "result-content--edible",
+    poisonous: "result-content--poisonous",
   };
 
   return (
@@ -131,11 +131,9 @@ const App: React.FC = () => {
       <Row>
         <Col xs={5} />
         <Col xs={2}>
-          <div className="container__result">
+          <div className="result">
             {predictResult.length > 0 && (
-              <span
-                className={`container__result-content ${modifiers[predictResult]}`}
-              >
+              <span className={`result-content ${modifiers[predictResult]}`}>
                 {capitalizeFirst(predictResult)}
               </span>
             )}
@@ -147,13 +145,13 @@ const App: React.FC = () => {
       <Row>
         <Col xs={2} />
         <Col xs={8}>
-          <div className="container__image">
+          <div className="image">
             <Image
-              className="container__image-img"
+              className="image-img"
               src={require("../../assets/forest.jpg").default}
             />
             <Image
-              className="container__image-img"
+              className="image-img"
               src={require("../../assets/forest.jpg").default}
             />
           </div>
