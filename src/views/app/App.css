@@ -32,3 +32,7 @@
   font-family: "OpenSans-SemiBold";
   text-align: center;
 }
+
+.container__image {
+  width: 32vw;
+}

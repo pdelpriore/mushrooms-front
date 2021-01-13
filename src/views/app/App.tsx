@@ -139,6 +139,20 @@ const App: React.FC = () => {
         </Col>
         <Col xs={5} />
       </Row>
+      <Row>
+        <Col xs={2} />
+        <Col xs={8}>
+          <Image
+            className="container__image"
+            src={require("../../assets/forest.jpg").default}
+          />
+          <Image
+            className="container__image"
+            src={require("../../assets/forest.jpg").default}
+          />
+        </Col>
+        <Col xs={2} />
+      </Row>
     </div>
   );
 };
