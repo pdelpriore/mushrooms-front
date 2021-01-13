@@ -25,3 +25,9 @@
   cursor: auto;
   transform: scale(1);
 }
+
+@media (max-width: 700px) {
+  .icon-ico {
+    font-size: 5vw;
+  }
+}

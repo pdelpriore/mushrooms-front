@@ -64,3 +64,21 @@
 .result-content--poisonous {
   color: #dc3545;
 }
+
+@media (max-width: 700px) {
+  .banner {
+    height: 10vh;
+  }
+
+  .banner__title {
+    font-size: 8vw;
+  }
+
+  .counter {
+    font-size: 3vw;
+  }
+
+  .container__space {
+    height: 10vh;
+  }
+}

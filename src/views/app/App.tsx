@@ -71,8 +71,8 @@ const App: React.FC = () => {
     <div className="container">
       <Row className="mt-4" />
       <Row>
-        <Col xs={2} />
-        <Col xs={8}>
+        <Col md={2} />
+        <Col md={8}>
           <div className="banner">
             <span className="banner__title">Can I eat this</span>
             <Image
@@ -82,24 +82,24 @@ const App: React.FC = () => {
             <span className="banner__title">?</span>
           </div>
         </Col>
-        <Col xs={2} />
+        <Col md={2} />
       </Row>
       <Row className="mt-5" />
       <Row>
-        <Col xs={2} />
-        <Col xs={2}>
+        <Col md={2} xs={3} />
+        <Col md={2} xs={2}>
           <SwitchButton
             blocked={currentIndex === 0}
             icon={faArrowAltCircleLeft}
             onClick={handlePrev}
           />
         </Col>
-        <Col xs={4}>
+        <Col md={4} xs={2}>
           <span className="counter">
             {currentIndex + 1} / {features.length}
           </span>
         </Col>
-        <Col xs={2}>
+        <Col md={2} xs={2}>
           <SwitchButton
             blocked={
               currentIndex === features.length - 1 ||
@@ -109,12 +109,12 @@ const App: React.FC = () => {
             onClick={handleNext}
           />
         </Col>
-        <Col xs={2} />
+        <Col md={2} xs={3} />
       </Row>
       <Row className="mt-3" />
       <Row>
-        <Col xs={4} />
-        <Col xs={4}>
+        <Col md={4} xs={3} />
+        <Col md={4} xs={6}>
           <MForm
             submitDisabled={Object.values(inputs).length !== features.length}
             label={formElements[currentIndex].label}
@@ -126,7 +126,7 @@ const App: React.FC = () => {
             inputs={inputs}
           />
         </Col>
-        <Col xs={4} />
+        <Col md={4} xs={3} />
       </Row>
       <Row>
         <Col xs={5} />
