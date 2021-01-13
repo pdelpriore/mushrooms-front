@@ -1,3 +1,7 @@
+:root {
+  --font-color: "#0e153a";
+}
+
 .container {
   min-height: 100vh;
   min-width: 100vw;
@@ -6,6 +10,25 @@
 }
 
 .banner {
-  height: 20vh;
+  height: 22vh;
+  text-align: center;
+}
+
+.banner__title {
+  color: var(--font-color);
+  font-size: 6vw;
+  font-family: "Nunito-SemiBold";
+}
+
+.banner__image {
+  width: 13vw;
+  margin-bottom: 2%;
+}
+
+.counter {
+  display: block;
+  color: var(--font-color);
+  font-size: 1vw;
+  font-family: "OpenSans-SemiBold";
   text-align: center;
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/free-regular-svg-icons";
+import "./switchButton.css";
 
 type TClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 

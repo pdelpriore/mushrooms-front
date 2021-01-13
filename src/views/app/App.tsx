@@ -75,27 +75,31 @@ const App: React.FC = () => {
         <Col xs={8}>
           <div className="banner">
             <span className="banner__title">Can I eat this</span>
-            {/* <Image className="banner__image" /> */}
+            <Image
+              className="banner__image"
+              src={require("../../assets/mushroom.jpg").default}
+            />
             <span className="banner__title">?</span>
           </div>
         </Col>
         <Col xs={2} />
       </Row>
+      <Row className="mt-5" />
       <Row>
-        <Col xs={4} />
-        <Col xs={1}>
+        <Col xs={2} />
+        <Col xs={2}>
           <SwitchButton
             blocked={currentIndex === 0}
             icon={faArrowAltCircleLeft}
             onClick={handlePrev}
           />
         </Col>
-        <Col xs={2}>
+        <Col xs={4}>
           <span className="counter">
             {currentIndex + 1} / {features.length}
           </span>
         </Col>
-        <Col xs={1}>
+        <Col xs={2}>
           <SwitchButton
             blocked={
               currentIndex < features.length - 1 &&
@@ -105,7 +109,7 @@ const App: React.FC = () => {
             onClick={handleNext}
           />
         </Col>
-        <Col xs={4} />
+        <Col xs={2} />
       </Row>
       <Row className="mt-3" />
       <Row>
