@@ -72,7 +72,7 @@ const App: React.FC = () => {
       <Row className="mt-4" />
       <Row>
         <Col xs={2} />
-        <Col xs={10}>
+        <Col xs={8}>
           <div className="banner">
             <span className="banner__title">Can I eat this</span>
             {/* <Image className="banner__image" /> */}

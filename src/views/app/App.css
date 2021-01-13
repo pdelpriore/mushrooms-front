@@ -4,3 +4,8 @@
   overflow: hidden;
   background-color: #e2f3f5;
 }
+
+.banner {
+  height: 20vh;
+  text-align: center;
+}
