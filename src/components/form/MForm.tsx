@@ -46,22 +46,27 @@ const MForm: React.FC<MFormProps> = ({
   );
 
   return (
-    <Form onSubmit={(e: React.FormEvent) => onSubmit(e)}>
+    <Form className="form" onSubmit={(e: React.FormEvent) => onSubmit(e)}>
       <Form.Group controlId="formBasicMushrooms">
-        <Form.Label>{capitalize(label)}</Form.Label>
+        <Form.Label className="form__label">{capitalize(label)}</Form.Label>
         <Form.Control
+          className="form__control"
           as="select"
           name={targetName}
           value={inputs[targetName] || ""}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e)}
         >
-          <option disabled={true} value="">
+          <option className="form__option" disabled={true} value="">
             {capitalize("choose one option")}
           </option>
           {options.optionValues.map((optionValue, index) => {
             let optionShortcut: string = options.optionShortcuts[index];
             return (
-              <option key={index} value={optionShortcut || ""}>
+              <option
+                className="form__option"
+                key={index}
+                value={optionShortcut || ""}
+              >
                 {capitalizeFirst(optionValue)}
               </option>
             );
@@ -69,7 +74,12 @@ const MForm: React.FC<MFormProps> = ({
         </Form.Control>
       </Form.Group>
       {(predictResult.length === 0 || error.length > 0) && (
-        <Button disabled={submitDisabled} type="submit" variant="outline-dark">
+        <Button
+          className="form__btn"
+          disabled={submitDisabled}
+          type="submit"
+          variant="outline-dark"
+        >
           <div>
             {loading && (
               <Spinner
@@ -81,9 +91,13 @@ const MForm: React.FC<MFormProps> = ({
               />
             )}
             {loading ? (
-              <span>{capitalizeFirst("predicting ...")}</span>
+              <span className="form__btn-content">
+                {capitalizeFirst("predicting ...")}
+              </span>
             ) : (
-              <span>{capitalizeFirst("predict")}</span>
+              <span className="form__btn-content">
+                {capitalizeFirst("predict")}
+              </span>
             )}
           </div>
         </Button>
@@ -91,6 +105,7 @@ const MForm: React.FC<MFormProps> = ({
       {error.length > 0 && <span>{error}</span>}
       {predictResult.length > 0 && error.length === 0 && (
         <Button
+          className="form__btn"
           onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
             onClick(e)
           }
