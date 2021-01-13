@@ -11,13 +11,15 @@ interface ButtonProps {
 }
 
 const SwitchButton: React.FC<ButtonProps> = ({ blocked, icon, onClick }) => {
-  // blocked bedzie uzyty jako modifier dla styli css
   return (
     <div
       className="wrapper"
       onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => onClick(e)}
     >
-      <FontAwesomeIcon className="wrapper__icon" icon={icon} />
+      <FontAwesomeIcon
+        className={`wrapper__icon ${blocked && "wrapper__icon--blocked"}`}
+        icon={icon}
+      />
     </div>
   );
 };
