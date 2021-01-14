@@ -82,7 +82,7 @@ const MForm: React.FC<MFormProps> = ({
           type="submit"
           variant="outline-dark"
         >
-          <div className="form_btn-wrap">
+          <div className="form__btn-wrap">
             {loading &&
               (viewport > 900 && viewport <= 1024 ? (
                 <Spinner
