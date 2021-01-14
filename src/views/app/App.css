@@ -65,20 +65,54 @@
   color: #dc3545;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 500px) {
   .banner {
-    height: 10vh;
+    height: 12vh;
   }
 
   .banner__title {
-    font-size: 8vw;
+    font-size: 12vw;
   }
 
   .counter {
-    font-size: 3vw;
+    font-size: 3.5vw;
   }
 
   .container__space {
-    height: 10vh;
+    height: 8vh;
+  }
+
+  .result {
+    margin-top: 20%;
+  }
+
+  .result-content {
+    font-size: 6.5vw;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 1024px) {
+  .banner {
+    height: 16vh;
+  }
+
+  .banner__title {
+    font-size: 11vw;
+  }
+
+  .counter {
+    font-size: 3.5vw;
+  }
+
+  .container__space {
+    height: 14vh;
+  }
+
+  .result {
+    margin-top: 20%;
+  }
+
+  .result-content {
+    font-size: 6.5vw;
   }
 }

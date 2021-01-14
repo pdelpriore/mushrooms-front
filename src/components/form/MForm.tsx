@@ -29,6 +29,7 @@ interface MFormProps {
   onClick: TOnclick;
   onSubmit: TOnsubmit;
   inputs: inputs;
+  viewport: number;
 }
 
 const MForm: React.FC<MFormProps> = ({
@@ -40,6 +41,7 @@ const MForm: React.FC<MFormProps> = ({
   onClick,
   onSubmit,
   inputs,
+  viewport,
 }) => {
   const { loading, predictResult, error } = useSelector(
     (state: RootState) => state.prediction
@@ -81,15 +83,23 @@ const MForm: React.FC<MFormProps> = ({
           variant="outline-dark"
         >
           <div>
-            {loading && (
-              <Spinner
-                as="span"
-                animation="border"
-                size="sm"
-                role="status"
-                aria-hidden="true"
-              />
-            )}
+            {loading &&
+              (viewport > 900 && viewport <= 1024 ? (
+                <Spinner
+                  as="span"
+                  animation="border"
+                  role="status"
+                  aria-hidden="true"
+                />
+              ) : (
+                <Spinner
+                  as="span"
+                  animation="border"
+                  size="sm"
+                  role="status"
+                  aria-hidden="true"
+                />
+              ))}
             {loading ? (
               <span className="form__btn-content">
                 {capitalizeFirst("predicting ...")}

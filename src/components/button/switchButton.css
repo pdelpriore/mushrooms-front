@@ -26,8 +26,14 @@
   transform: scale(1);
 }
 
-@media (max-width: 700px) {
+@media (max-width: 500px) {
   .icon-ico {
-    font-size: 5vw;
+    font-size: 7vw;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 1024px) {
+  .icon-ico {
+    font-size: 6.5vw;
   }
 }

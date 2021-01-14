@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/config/Store";
 import {
@@ -30,6 +30,7 @@ const App: React.FC = () => {
 
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [inputs, setInputs] = useState<TInputState>({});
+  const [viewport, setViewport] = useState<number>(0);
 
   const { predictResult } = useSelector((state: RootState) => state.prediction);
 
@@ -67,12 +68,16 @@ const App: React.FC = () => {
     poisonous: "result-content--poisonous",
   };
 
+  useEffect(() => {
+    setViewport(window.innerWidth);
+  }, []);
+
   return (
     <div className="container">
       <Row className="mt-4" />
       <Row>
-        <Col md={2} />
-        <Col md={8}>
+        <Col xl={2} />
+        <Col xl={8}>
           <div className="banner">
             <span className="banner__title">Can I eat this</span>
             <Image
@@ -82,24 +87,24 @@ const App: React.FC = () => {
             <span className="banner__title">?</span>
           </div>
         </Col>
-        <Col md={2} />
+        <Col xl={2} />
       </Row>
       <Row className="mt-5" />
       <Row>
-        <Col md={2} xs={3} />
-        <Col md={2} xs={2}>
+        <Col xs={2} />
+        <Col xs={2}>
           <SwitchButton
             blocked={currentIndex === 0}
             icon={faArrowAltCircleLeft}
             onClick={handlePrev}
           />
         </Col>
-        <Col md={4} xs={2}>
+        <Col xs={4}>
           <span className="counter">
             {currentIndex + 1} / {features.length}
           </span>
         </Col>
-        <Col md={2} xs={2}>
+        <Col xs={2}>
           <SwitchButton
             blocked={
               currentIndex === features.length - 1 ||
@@ -109,12 +114,12 @@ const App: React.FC = () => {
             onClick={handleNext}
           />
         </Col>
-        <Col md={2} xs={3} />
+        <Col xs={2} />
       </Row>
       <Row className="mt-3" />
       <Row>
-        <Col md={4} xs={3} />
-        <Col md={4} xs={6}>
+        <Col xl={4} xs={3} />
+        <Col xl={4} xs={6}>
           <MForm
             submitDisabled={Object.values(inputs).length !== features.length}
             label={formElements[currentIndex].label}
@@ -124,13 +129,14 @@ const App: React.FC = () => {
             onClick={handleReset}
             onSubmit={handleSubmit}
             inputs={inputs}
+            viewport={viewport}
           />
         </Col>
-        <Col md={4} xs={3} />
+        <Col xl={4} xs={3} />
       </Row>
       <Row>
-        <Col xs={5} />
-        <Col xs={2}>
+        <Col xl={5} xs={4} />
+        <Col xl={2} xs={4}>
           <div className="result">
             {predictResult.length > 0 && (
               <span className={`result-content ${modifiers[predictResult]}`}>
@@ -139,7 +145,7 @@ const App: React.FC = () => {
             )}
           </div>
         </Col>
-        <Col xs={5} />
+        <Col xl={5} xs={4} />
       </Row>
       <div className="container__space"></div>
       <Row>
