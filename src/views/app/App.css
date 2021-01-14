@@ -1,5 +1,6 @@
 :root {
   --font-color: #0e153a;
+  --font-size: 1vw;
 }
 
 .container {
@@ -32,7 +33,7 @@
 .counter {
   display: block;
   color: var(--font-color);
-  font-size: 1vw;
+  font-size: var(--font-size);
   font-family: "OpenSans-SemiBold";
   text-align: center;
 }
@@ -65,6 +66,23 @@
   color: #dc3545;
 }
 
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.footer__content {
+  font-size: var(--font-size);
+  color: #3d5af1;
+  font-family: "OpenSans-Regular";
+}
+
+.footer__icon:hover {
+  transform: scale(1.1);
+}
+
 @media (max-width: 500px) {
   .banner {
     height: 12vh;
@@ -89,6 +107,10 @@
   .result-content {
     font-size: 6.5vw;
   }
+
+  .footer__content {
+    font-size: 3vw;
+  }
 }
 
 @media (min-width: 501px) and (max-width: 1024px) {
@@ -105,7 +127,7 @@
   }
 
   .container__space {
-    height: 14vh;
+    height: 12vh;
   }
 
   .result {
@@ -114,5 +136,13 @@
 
   .result-content {
     font-size: 6.5vw;
+  }
+
+  .footer__content {
+    font-size: 3vw;
+  }
+
+  .footer__icon {
+    font-size: 3vw;
   }
 }

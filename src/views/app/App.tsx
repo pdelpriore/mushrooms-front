@@ -5,11 +5,13 @@ import {
   predict,
   clearPredictState,
 } from "../../redux/predict/thunk/predictThunk";
-import { Row, Col, Image } from "react-bootstrap";
+import { Row, Col, Image, Nav } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowAltCircleLeft,
   faArrowAltCircleRight,
 } from "@fortawesome/free-regular-svg-icons";
+import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import MForm from "../../components/form/MForm";
 import SwitchButton from "../../components/button/SwitchButton";
 import { formElements } from "../../shared/formElements";
@@ -163,6 +165,24 @@ const App: React.FC = () => {
           </div>
         </Col>
         <Col xs={2} />
+      </Row>
+      <Row className="mt-3" />
+      <Row>
+        <Col xl={7} xs={4} />
+        <Col xl={3} xs={7}>
+          <div className="footer">
+            <span className="footer__content">
+              &#169; {new Date().getFullYear()} Paweł Del Priore
+            </span>
+            <Nav.Link
+              href="http://www.linkedin.com/in/pawe%C5%82-del-priore-b55bbb1a8"
+              target="_blank"
+            >
+              <FontAwesomeIcon className="footer__icon" icon={faLinkedin} />
+            </Nav.Link>
+          </div>
+        </Col>
+        <Col xl={2} xs={1} />
       </Row>
     </div>
   );
