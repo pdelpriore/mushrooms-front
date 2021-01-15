@@ -10,6 +10,7 @@ package-lock.json
 yarn.lock
 .eslintcache
 tsconfig.json
+debug.log
 
 # testing
 /coverage
