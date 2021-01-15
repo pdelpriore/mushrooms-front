@@ -22,6 +22,10 @@
   font-family: var(--font-family);
 }
 
+.btn-wrap {
+  height: 6vh;
+}
+
 .form__btn-content {
   font-size: var(--font-size);
   font-family: var(--font-family);
@@ -48,6 +52,10 @@
 
   .form__option {
     font-size: 3.5vw;
+  }
+
+  .btn-wrap {
+    height: 7vh;
   }
 
   .form__btn-content {

@@ -75,59 +75,61 @@ const MForm: React.FC<MFormProps> = ({
           })}
         </Form.Control>
       </Form.Group>
-      {(predictResult.length === 0 || error.length > 0) && (
-        <Button
-          className="form__btn"
-          disabled={submitDisabled}
-          type="submit"
-          variant="outline-dark"
-        >
-          <div className="form__btn-wrap">
-            {loading &&
-              (viewport > 900 && viewport <= 1024 ? (
-                <Spinner
-                  as="span"
-                  animation="border"
-                  role="status"
-                  aria-hidden="true"
-                />
+      <div className="btn-wrap">
+        {(predictResult.length === 0 || error.length > 0) && (
+          <Button
+            className="form__btn"
+            disabled={submitDisabled}
+            type="submit"
+            variant="outline-dark"
+          >
+            <div className="form__btn-wrap">
+              {loading &&
+                (viewport > 900 && viewport <= 1024 ? (
+                  <Spinner
+                    as="span"
+                    animation="border"
+                    role="status"
+                    aria-hidden="true"
+                  />
+                ) : (
+                  <Spinner
+                    as="span"
+                    animation="border"
+                    size="sm"
+                    role="status"
+                    aria-hidden="true"
+                  />
+                ))}
+              {loading ? (
+                <span className="form__btn-content">
+                  {capitalizeFirst("predicting ...")}
+                </span>
               ) : (
-                <Spinner
-                  as="span"
-                  animation="border"
-                  size="sm"
-                  role="status"
-                  aria-hidden="true"
-                />
-              ))}
-            {loading ? (
-              <span className="form__btn-content">
-                {capitalizeFirst("predicting ...")}
-              </span>
-            ) : (
-              <span className="form__btn-content">
-                {capitalizeFirst("predict")}
-              </span>
-            )}
-          </div>
-        </Button>
-      )}
-      <div className="form__error">
-        {error.length > 0 && (
-          <span className="form__error-content">{error}</span>
+                <span className="form__btn-content">
+                  {capitalizeFirst("predict")}
+                </span>
+              )}
+            </div>
+          </Button>
+        )}
+        <div className="form__error">
+          {error.length > 0 && (
+            <span className="form__error-content">{error}</span>
+          )}
+        </div>
+        {predictResult.length > 0 && error.length === 0 && (
+          <Button
+            className="form__btn"
+            onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+              onClick(e)
+            }
+            variant="dark"
+          >
+            Reset
+          </Button>
         )}
       </div>
-      {predictResult.length > 0 && error.length === 0 && (
-        <Button
-          className="form__btn"
-          onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
-            onClick(e)
-          }
-          variant="dark"
-        >
-          Reset
-        </Button>
-      )}
     </Form>
   );
 };
