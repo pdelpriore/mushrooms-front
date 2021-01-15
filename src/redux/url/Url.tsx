@@ -3,5 +3,5 @@ interface Url {
 }
 
 export const url: Readonly<Url> = Object.freeze({
-  PREDICT: "http://127.0.0.1:8000/mushrooms/api/predict",
+  PREDICT: "https://edibleorpoisonous.herokuapp.com/mushrooms/api/predict",
 });
