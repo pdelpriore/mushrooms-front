@@ -100,6 +100,10 @@
     height: 8vh;
   }
 
+  .image-img {
+    width: 30vw;
+  }
+
   .result {
     margin-top: 20%;
   }
